@@ -1,7 +1,7 @@
 <template>
-    <header class="navbar">
-        <p class="title__nav">BARATO COLETIVO</p>
-    </header>
+    <footer class="footer">
+        <p class="title__footer">FOOTER</p>
+    </footer>
 </template>
 
 <script>
@@ -11,12 +11,12 @@
 </script>
 
 <style scoped>
-    .title__nav{
+    .title__footer{
         color:white;
         margin: 0;
     }
 
-    .navbar{
+    .footer{
         background-color: #5a016f;
         height: 60px;
         padding: 0px 40px;
