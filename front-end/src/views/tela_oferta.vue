@@ -55,6 +55,7 @@
     .price{
         margin-bottom: 20px;
         font-size: 24px;
+        color: #5a016f;
     }
 
     .img{
@@ -64,26 +65,30 @@
     }
 
     .sub-img{
+        width: 100%;
         border: 1px solid black;
         height: 100px;
     }
 
     .sub-box-img{
+        width: 100%;
         gap: 10px;
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     main{
         padding: 20px 0px;
         min-height: 85vh;
         height: 100%;
+        width: 80%;
+        margin: auto;
         display: grid;
-        gap: 20px;
+        gap: 30px;
         justify-items:center;
         align-items: center;
         justify-content: center;
-        grid-template-columns: repeat(auto-fill, minmax(400px,500px));
+        grid-template-columns: repeat(auto-fill, minmax(300px,500px));
     }
 
     .box-img{
@@ -91,27 +96,23 @@
         align-items: center;
         flex-direction: column;
         gap: 10px;
+        width: 100%;
     }
 
     .infos{
-        width: 60%;
+        width: 80%;
         text-align: center;
         display: flex;
         flex-direction: column;
     }
 
     .btn{
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgb(214, 214, 214);
+        border: 0;
+        color:white;
+        background-color: #5a016f;
         padding: 10px 20px;
         width: 100%;
         cursor: pointer;
     }
 
-    .btn:hover{
-        background-color: white;
-        border: 1px solid blue;
-
-    }
 </style>

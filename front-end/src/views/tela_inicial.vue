@@ -37,10 +37,12 @@
 </script>
 
 <style scoped>
+
     main{
         display: grid;
         justify-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-        margin-bottom: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+        width: 90%;
+        margin: 30px auto;
     }
 </style>
