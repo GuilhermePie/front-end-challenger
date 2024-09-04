@@ -1,9 +1,9 @@
 <script setup>
-  import tela_inicial from './views/tela_inicial.vue'
+  import {RouterView} from 'vue-router'
 </script>
 
 <template>
-    <tela_inicial/>
+    <RouterView/>
 </template>
 
 <style scoped>

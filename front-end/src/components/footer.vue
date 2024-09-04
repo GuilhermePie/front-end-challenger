@@ -17,6 +17,7 @@
     }
 
     .footer{
+        bottom: 0;
         background-color: #5a016f;
         height: 60px;
         padding: 0px 40px;

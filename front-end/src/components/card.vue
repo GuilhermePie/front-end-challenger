@@ -23,6 +23,7 @@
         methods:{
             getId(id){
                 localStorage.setItem('id',id)
+                this.$router.push({ path: '/tela_oferta' })
                 console.log(id)
             }
         }

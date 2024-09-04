@@ -19,8 +19,8 @@
             }
         },
 
-        mounted(){
-             axios.get('https://dummyjson.com/products').then(response => {
+        async mounted(){
+             await axios.get('https://dummyjson.com/products').then(response => {
                 console.log(response.data.products)
                 this.arrays = response.data.products
             }).catch(error => {
