@@ -1,17 +1,22 @@
 <template>
     <header class="navbar">
-        <p class="title__nav">BARATO COLETIVO</p>
+        <p class="title__nav" @click="voltar()">BARATO COLETIVO</p>
     </header>
 </template>
 
 <script>
     export default {
-        
+        methods:{
+            voltar(){
+                this.$router.push({ path: '/' })
+            }
+        }
     }
 </script>
 
 <style scoped>
     .title__nav{
+        cursor: pointer;
         color:white;
         margin: 0;
     }

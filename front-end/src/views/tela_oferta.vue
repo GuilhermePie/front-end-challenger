@@ -13,7 +13,7 @@
             <h2>{{ arrays.title }}</h2>
             <p>{{ arrays.description }}</p>
             <span class="price"><strong>R$ {{ arrays.price }}</strong></span>
-            <button class="btn">COMPRAR</button>
+            <button class="btn" @click="checkout()">COMPRAR</button>
         </div>
     </main>
     <footer_bar />
@@ -36,9 +36,16 @@
              await axios.get(`https://dummyjson.com/products/${id}`).then(response => {
                 console.log(response.data)
                 this.arrays = response.data
+                localStorage.setItem('price',this.arrays.price)
             }).catch(error => {
                 console.error(error);
             })
+        },
+
+        methods:{
+            checkout(){
+                this.$router.push({ path: '/tela_checkout' })
+            }
         },
 
         components:{
