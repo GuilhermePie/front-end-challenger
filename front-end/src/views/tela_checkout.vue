@@ -6,14 +6,14 @@
             <input type="text" placeholder="Cartão">
             <input type="text" placeholder="Nome impresso">
             <div class="sub-form">
-                <input type="text" placeholder="Validade">
-                <input type="text" placeholder="Codigo de segurança">
+                <input type="text" class="sub-input" placeholder="Validade">
+                <input type="text" class="sub-input" placeholder="Codigo de segurança" minlength="3" maxlength="3">
             </div>
             <button class="btn">PAGAR AGORA!</button>
         </div>
         <div class="resumo-compra">
             <h2>RESUMO DE COMPRA</h2>
-            <p>1x item</p>
+            <p>1x {{title}}</p>
             <p>R$ {{price}}</p>
             <hr>
             <p>TOTAL: R$ {{price}}</p>
@@ -28,9 +28,13 @@
 
     export default {
         data(){
+
             const priceItem = localStorage.getItem('price')
+            const titleItem = localStorage.getItem('title')
+
             return{
-                price:priceItem
+                price:priceItem,
+                title:titleItem
             }
         },
 
@@ -43,11 +47,13 @@
 
 <style scoped>    
     main{
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        justify-items:center;
         align-items: center;
-        justify-content: space-evenly;
-        height: 82.4vh;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, minmax(300px,500px));
+        height: 100%;
+        min-height: 100vh;
     }
 
     .btn{
@@ -62,14 +68,16 @@
     .form{
         display: flex;
         flex-direction: column;
-        width: 400px;
-        padding: 30px;
+        width: 80%;
     }
 
     .sub-form{
-        width: 100%;
         display: flex;
         justify-content: space-between;
+    }
+
+    .sub-input{
+        width: 42%;
     }
 
     input{

@@ -36,6 +36,7 @@
              await axios.get(`https://dummyjson.com/products/${id}`).then(response => {
                 console.log(response.data)
                 this.arrays = response.data
+                localStorage.setItem('title',this.arrays.title)
                 localStorage.setItem('price',this.arrays.price)
             }).catch(error => {
                 console.error(error);
@@ -50,7 +51,7 @@
 
         components:{
             nav_bar,
-            footer_bar
+            footer_bar,
         }
     }
 </script>
