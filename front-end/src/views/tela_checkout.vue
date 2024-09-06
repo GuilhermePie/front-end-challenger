@@ -1,15 +1,87 @@
 <template>
-    <div>
-
-    </div>
+    <nav_bar/>
+    <main>
+        <div class="form">
+            <h2>PAGAMENTO</h2>
+            <input type="text" placeholder="Cartão">
+            <input type="text" placeholder="Nome impresso">
+            <div class="sub-form">
+                <input type="text" class="sub-input" placeholder="Validade">
+                <input type="text" class="sub-input" placeholder="Codigo de segurança" minlength="3" maxlength="3">
+            </div>
+            <button class="btn">PAGAR AGORA!</button>
+        </div>
+        <div class="resumo-compra">
+            <h2>RESUMO DE COMPRA</h2>
+            <p>1x {{title}}</p>
+            <p>R$ {{price}}</p>
+            <hr>
+            <p>TOTAL: R$ {{price}}</p>
+        </div>
+    </main>
+    <footer_bar/>
 </template>
 
 <script>
+    import nav_bar from '../components/header.vue'
+    import footer_bar from '../components/footer.vue'
+
     export default {
-        
+        data(){
+
+            const priceItem = localStorage.getItem('price')
+            const titleItem = localStorage.getItem('title')
+
+            return{
+                price:priceItem,
+                title:titleItem
+            }
+        },
+
+        components:{
+            nav_bar,
+            footer_bar
+        }
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>    
+    main{
+        display: grid;
+        justify-items:center;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, minmax(300px,500px));
+        height: 100%;
+        min-height: 100vh;
+    }
 
+    .btn{
+        border: 0;
+        background-color:#5a016f;
+        color:white;
+        padding: 15px 20px;
+        width: 100%;
+        margin-top: 50px;
+        cursor: pointer;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .sub-form{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sub-input{
+        width: 42%;
+    }
+
+    input{
+        margin-top: 20px;
+        padding: 8px;
+    }
 </style>

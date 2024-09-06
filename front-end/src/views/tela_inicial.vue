@@ -19,8 +19,8 @@
             }
         },
 
-        mounted(){
-             axios.get('https://dummyjson.com/products').then(response => {
+        async mounted(){
+             await axios.get('https://dummyjson.com/products').then(response => {
                 console.log(response.data.products)
                 this.arrays = response.data.products
             }).catch(error => {
@@ -37,10 +37,12 @@
 </script>
 
 <style scoped>
+
     main{
         display: grid;
         justify-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-        margin-bottom: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+        width: 90%;
+        margin: 30px auto;
     }
 </style>

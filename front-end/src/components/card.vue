@@ -5,7 +5,7 @@
         </div>
         <div class="infos__prod">
             <h3>{{ title }}</h3>
-            <p>R$ {{ price }}</p>
+            <p class="price"><strong>R$ {{ price }}</strong></p>
             <button class="btn" @click="getId(id)">COMPRAR</button>
         </div>
     </div>
@@ -23,6 +23,7 @@
         methods:{
             getId(id){
                 localStorage.setItem('id',id)
+                this.$router.push({ path: '/tela_oferta' })
                 console.log(id)
             }
         }
@@ -30,38 +31,43 @@
 </script>
 
 <style scoped>
+    .price{
+        font-size: 18px;
+        color: #5a016f;
+        
+    }
+
+    h3{
+      margin: 0;  
+    }
     .btn{
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgb(214, 214, 214);
-        padding: 10px 20px;
+        border: 0;
+        background-color:#5a016f;
+        color:white;
+        padding: 15px 20px;
         width: 100%;
         cursor: pointer;
     }
 
-    .btn:hover{
-        background-color: white;
-        border: 1px solid blue;
-
-    }
 
     .img__box{
         width: 100%;
-        height: 200px;
+        height: 150px;
     }
 
     .infos__prod{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         text-align: center;
     }
 
     .card__box{
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        border: 1px solid black;
+        justify-content: space-between;
         width: 250px;
-        border-radius: 5px;
         margin-top: 30px;
-        padding: 5px;
+        box-shadow: 0px 0px 15px 7px rgba(0,0,0,0.22);
     }
 </style>
