@@ -85,16 +85,8 @@
     .products-list{
         display: flex;
         overflow: auto;
-        gap:30px;
-        padding: 0px 30px
+        gap:35px;
+        padding: 10px 30px
     }
-
-    /* main{
-        display: grid;
-        justify-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-        width: 90%;
-        margin: 30px auto;
-    } */
 
 </style>
