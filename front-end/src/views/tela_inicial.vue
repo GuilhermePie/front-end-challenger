@@ -79,14 +79,15 @@
 
 <style scoped>
     .box-list{
-        padding: 20px 40px;
+        padding: 20px 20px;
     }
 
     .products-list{
         display: flex;
         overflow: auto;
-        gap:35px;
-        padding: 10px 30px
+        gap:20px;
+        padding: 20px 5px;
+        scrollbar-width: thin; 
     }
 
 </style>

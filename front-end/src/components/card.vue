@@ -1,12 +1,11 @@
 <template>
-    <div class="card__box">
+    <div class="card__box" @click="getId(id)">
         <div>
             <img :src=link alt="" class="img__box">
         </div>
         <div class="infos__prod">
             <h3>{{ title }}</h3>
             <p class="price"><strong>R$ {{ price }}</strong></p>
-            <button class="btn" @click="getId(id)">COMPRAR</button>
         </div>
     </div>
 </template>
@@ -32,20 +31,12 @@
 <style scoped>
     .price{
         font-size: 18px;
-        color: #5a016f; 
+        color: #5a016f;
+        margin: 5px 0px;
     }
 
     h3{
       margin: 0;  
-    }
-
-    .btn{
-        border: 0;
-        background-color:#5a016f;
-        color:white;
-        padding: 15px 20px;
-        width: 100%;
-        cursor: pointer;
     }
 
     .img__box{
@@ -58,14 +49,15 @@
         flex-direction: column;
         justify-content: space-around;
         text-align: center;
-        width: 200px;
+        width: 160px;
     }
 
     .card__box{
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-top: 10px;
-        box-shadow: 0px 0px 15px 7px rgba(0,0,0,0.22);
+        border-radius: 5px;
+        box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
     }
 </style>
