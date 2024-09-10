@@ -43,21 +43,22 @@
 
         async mounted(){
             // GROCERIES
-             await axios.get('https://dummyjson.com/products/category/groceries').then(response => {
+            await axios.post('http://localhost:3000/type-product', {type: 'groceries'}).then(response => {
                 this.arrays_groceries = response.data.products
+                console.log(response)
             }).catch(error => {
                 console.error(error);
             })
 
-            // KICHEN ACCESSORIES
-            await axios.get('https://dummyjson.com/products/category/kitchen-accessories').then(response => {
+            // KITCHEN ACCESSORIES
+            await axios.post('http://localhost:3000/type-product', {type: 'kitchen-accessories'}).then(response => {
                 this.arrays_kitchen_accessories = response.data.products
             }).catch(error => {
                 console.error(error);
             })
 
             // HOME DECORATION
-            await axios.get('https://dummyjson.com/products/category/home-decoration').then(response => {
+            await axios.post('http://localhost:3000/type-product', {type: 'home-decoration'}).then(response => {
                 this.arrays_home_decoration = response.data.products
             }).catch(error => {
                 console.error(error);
