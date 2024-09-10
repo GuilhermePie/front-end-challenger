@@ -49,11 +49,11 @@
     main{
         display: grid;
         justify-items:center;
-        align-items: center;
+        align-content: center;
         justify-content: center;
+        gap: 30px;
         grid-template-columns: repeat(auto-fill, minmax(300px,500px));
-        height: 100%;
-        min-height: 100vh;
+        height: 86.6vh;
     }
 
     .btn{
@@ -83,5 +83,9 @@
     input{
         margin-top: 20px;
         padding: 8px;
+    }
+
+    .resumo-compra{
+        width: 80%;
     }
 </style>
