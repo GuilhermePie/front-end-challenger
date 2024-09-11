@@ -36,15 +36,13 @@ Primeiro, clone o repositório do projeto para sua máquina local. No terminal, 
 
 ### 3. Entrar na pasta do projeto
 Navegue até a pasta onde o projeto foi clonado:  
-`cd pasta-do-clone`   
+`cd front-end-challenger`   
 
 `cd back-end`
 
 ### 4. Instalar dependências
 O projeto usa o gerenciador de pacotes npm. Para instalar todas as dependências necessárias, execute:  
-`npm install express --save`
-
-`npm install cors`
+`npm install`
 
 ### 6. Rodar o projeto
 Agora, inicie o servidor de desenvolvimento com o seguinte comando:  
