@@ -43,30 +43,32 @@
 
         async mounted(){
             // GROCERIES
-             await axios.get('https://dummyjson.com/products/category/groceries').then(response => {
-                this.arrays_groceries = response.data.products
+            await axios.post('http://localhost:3000/api-type', {api_products: 'groceries', other_api: ''}).then(response => {
+                this.arrays_groceries = response.data.products_result.products
             }).catch(error => {
                 console.error(error);
             })
 
-            // KICHEN ACCESSORIES
-            await axios.get('https://dummyjson.com/products/category/kitchen-accessories').then(response => {
-                this.arrays_kitchen_accessories = response.data.products
+            // KITCHEN ACCESSORIES
+            await axios.post('http://localhost:3000/api-type', {api_products: 'kitchen-accessories'}).then(response => {
+                this.arrays_kitchen_accessories = response.data.products_result.products
             }).catch(error => {
                 console.error(error);
             })
 
-            // HOME DECORATION
-            await axios.get('https://dummyjson.com/products/category/home-decoration').then(response => {
-                this.arrays_home_decoration = response.data.products
+            // // HOME DECORATION
+            await axios.post('http://localhost:3000/api-type', {api_products: 'home-decoration'}).then(response => {
+                this.arrays_home_decoration = response.data.products_result.products
             }).catch(error => {
                 console.error(error);
             })
 
-            await axios.get('https://dummyjson.com/products/category-list').then(response => {
-            }).catch(error => {
-                console.error(error);
-            })
+            //Outra Api
+            // await axios.post('http://localhost:3000/api-type', {other_api: 'oi'}).then(response => {
+            //     console.log(response)
+            // }).catch(error => {
+            //     console.error(error);
+            // })
         },
 
         components:{
