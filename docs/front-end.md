@@ -1,4 +1,4 @@
-Número do ADR ( Architecture Decision Records ): 001
+Número do ADR: 001
 Título: Escolha das Tecnologias de Front-end
 Data: 06/09/2024
 Responsável: Guilherme Piedade
