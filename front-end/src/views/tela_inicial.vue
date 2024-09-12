@@ -80,6 +80,9 @@
 </script>
 
 <style scoped>
+    main{
+        margin: 0px 40px;
+    }
     .box-list{
         padding: 20px 20px;
     }
@@ -92,4 +95,9 @@
         scrollbar-width: thin; 
     }
 
+    @media only screen and (max-width: 600px) {
+        main{
+            margin: 0px;
+        }
+    }
 </style>

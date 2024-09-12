@@ -53,6 +53,7 @@
     }
 
     .card__box{
+        width: 160px !important;
         cursor: pointer;
         display: flex;
         flex-direction: column;
