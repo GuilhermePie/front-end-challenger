@@ -9,15 +9,15 @@ router.post('/api-type', async (req,res)=>{
         var products_result = 'Api não utilizada'
 
         if(req.body.api_products){
-            products_result = await fetch(`https://dummyjson.com/products/category/${req.body.api_products}`)
+            products_result = await fetch(`https:/dummyjson.com/products/category/${req.body.api_products}`)
             .then(response => response.json())
-            .catch(err => console.log(err));
+            .catch(err => err.message);
         }
 
         if(req.body.other_api){
             other_result = await fetch(`https://dummyjson.com/products/category/home-decoration`)
             .then(response => response.json())
-            .catch(err => console.log(err)); 
+            .catch(err => err.message); 
         }
         
         const result = {products_result,other_result}
