@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <p class="title__footer">FOOTER</p>
+        <img src="../assets/images/logo-barato-coletivo-rem.png" alt="Logo do barato coletivo" class="img">
     </footer>
 </template>
 
@@ -11,17 +11,22 @@
 </script>
 
 <style scoped>
-    .title__footer{
-        color:white;
-        margin: 0;
+    .img{
+        height: 50px;
+        cursor: pointer;
     }
 
     .footer{
         bottom: 0;
         background-color: #5a016f;
-        height: 60px;
-        padding: 0px 40px;
+        padding: 0px 45px;
         display: flex;
         align-items: center;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .footer{
+            padding: 0px 10px;
+        }
     }
 </style>

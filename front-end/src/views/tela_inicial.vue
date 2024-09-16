@@ -10,17 +10,17 @@
         </div>  
 
         <div class="box-list">
-                <h3>KITCHEN ACCESSORIES</h3>
-                <div class="products-list">
-                    <card v-for="arr in arrays_kitchen_accessories" :title="arr.title" :price="arr.price" :link="arr.thumbnail" :id="arr.id"/>
-                </div>
+            <h3>KITCHEN ACCESSORIES</h3>
+            <div class="products-list">
+                <card v-for="arr in arrays_kitchen_accessories" :title="arr.title" :price="arr.price" :link="arr.thumbnail" :id="arr.id"/>
+            </div>
         </div>
 
         <div class="box-list">
-                <h3>HOME DECORATION</h3>
-                <div class="products-list">
-                    <card v-for="arr in arrays_home_decoration" :title="arr.title" :price="arr.price" :link="arr.thumbnail" :id="arr.id"/>
-                </div>
+            <h3>HOME DECORATION</h3>
+            <div class="products-list">
+                <card v-for="arr in arrays_home_decoration" :title="arr.title" :price="arr.price" :link="arr.thumbnail" :id="arr.id"/>
+            </div>
         </div>
     </main>
         <footer_bar />
@@ -44,21 +44,34 @@
         async mounted(){
             // GROCERIES
             await axios.post('http://localhost:3000/api-type', {api_products: 'groceries', other_api: ''}).then(response => {
-                this.arrays_groceries = response.data.products_result.products
+                if(response.data.products_result.products.length === 0){
+                    console.log('Categoria não encontrada')
+                }else{
+                    this.arrays_groceries = response.data.products_result.products
+                }
             }).catch(error => {
                 console.error(error);
             })
 
             // KITCHEN ACCESSORIES
             await axios.post('http://localhost:3000/api-type', {api_products: 'kitchen-accessories'}).then(response => {
-                this.arrays_kitchen_accessories = response.data.products_result.products
+                if(response.data.products_result.products.length === 0){
+                    console.log('Categoria não encontrada')
+                }else{
+                    this.arrays_kitchen_accessories = response.data.products_result.products
+                }
             }).catch(error => {
                 console.error(error);
             })
 
             // // HOME DECORATION
             await axios.post('http://localhost:3000/api-type', {api_products: 'home-decoration'}).then(response => {
-                this.arrays_home_decoration = response.data.products_result.products
+                if(response.data.products_result.products.length === 0){
+                    console.log('Categoria não encontrada ')
+                }else{
+                    this.arrays_home_decoration = response.data.products_result.products
+                }
+                
             }).catch(error => {
                 console.error(error);
             })
@@ -80,6 +93,9 @@
 </script>
 
 <style scoped>
+    main{
+        margin: 0px 40px;
+    }
     .box-list{
         padding: 20px 20px;
     }
@@ -92,4 +108,9 @@
         scrollbar-width: thin; 
     }
 
+    @media only screen and (max-width: 600px) {
+        main{
+            margin: 0px;
+        }
+    }
 </style>

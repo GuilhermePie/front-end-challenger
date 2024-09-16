@@ -1,6 +1,6 @@
 <template>
     <header class="navbar">
-        <p class="title__nav" @click="voltar()">BARATO COLETIVO</p>
+        <img src="../assets/images/logo-barato-coletivo-rem.png" alt="Logo do barato coletivo" class="img" @click="voltar()">
     </header>
 </template>
 
@@ -15,17 +15,21 @@
 </script>
 
 <style scoped>
-    .title__nav{
+    .img{
+        height: 80px;
         cursor: pointer;
-        color:white;
-        margin: 0;
     }
 
     .navbar{
         background-color: #5a016f;
-        height: 60px;
         padding: 0px 40px;
         display: flex;
         align-items: center;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .navbar{
+            padding: 0px 5px;
+        }
     }
 </style>
