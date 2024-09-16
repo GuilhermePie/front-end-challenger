@@ -41,7 +41,7 @@
     import { useVuelidate } from '@vuelidate/core'
     import { required, minLength } from '@vuelidate/validators'
     import { reactive, computed } from 'vue'
-    // import api from '../plugins/app.js'
+    import axios from 'axios'
 
     export default {
         setup(){
@@ -73,13 +73,13 @@
 
                 if(!this.v$.$error){
                     try{
-                    await api.post('/signUp', {
+                    await axios.post('http://localhost:3000/signUp', {
                         email:this.state.email,
                         name:this.state.username,
                         password:this.state.password
                     })
 
-                    this.$router.push('/')
+                    this.$router.push('/tela_login')
                     this.$swal('Sucesso','Usuário cadastrado com sucesso!','success');
 
                     }catch(err){

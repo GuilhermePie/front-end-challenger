@@ -22,7 +22,7 @@
 </template>
 
 <script>
-// import api from '../plugins/app.js'
+    import axios from 'axios'
 
     export default {
         data(){
@@ -37,7 +37,7 @@
         methods: {
             async validate(){
                 try{
-                const { data:token } = await api.post('/signIn', {
+                const { data:token } = await axios.post('http://localhost:3000/signIn', {
                         email:this.formValues.email,
                         password:this.formValues.password
                 })
