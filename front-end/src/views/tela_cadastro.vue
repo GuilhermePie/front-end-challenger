@@ -12,7 +12,7 @@
                 </div>
                 <div class="box-form-itens">
                     <div class="form-itens">
-                        <font-awesome-icon :icon="['fas', 'user']" />
+                        <font-awesome-icon :icon="['fas', 'envelope']" />
                         <input type="email" id="email" placeholder="email" class="input-item" autocomplete="off" v-model="state.email" >
                     </div>
                 <span class="error" v-if="v$.email.$error">{{ v$.email.$errors[0].$message }}</span>
@@ -28,7 +28,7 @@
             </div>
             <input type="submit" value="Sign Up" class="form-btn">
             <div class="redirect">
-                <a @click="signIp()" href=""><p>Back</p>
+                <a @click="signIn()" href=""><p>Back</p>
                 </a>
             </div>
             <!-- <img src="../assets/city.png" alt="cidade" class="city-image"> -->
@@ -79,7 +79,7 @@
                         password:this.state.password
                     })
 
-                    this.$router.push('/tela_login')
+                    this.$router.push('/')
                     this.$swal('Sucesso','Usuário cadastrado com sucesso!','success');
 
                     }catch(err){
@@ -92,14 +92,14 @@
                
             },
 
-            signIp(){
-                this.$router.push('/tela_login')
+            signIn(){
+                this.$router.push('/')
             },
         }
     }
 </script>
 
-<style>
+<style scoped>
     .city-image{
         width: 100%;
         position: absolute;

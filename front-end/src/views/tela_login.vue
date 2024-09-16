@@ -4,7 +4,7 @@
             <h2>Sign in</h2>
             <div class="form-infos">
                 <div class="form-itens">
-                    <font-awesome-icon :icon="['fas', 'user']" />
+                    <font-awesome-icon :icon="['fas', 'envelope']" />
                     <input type="email" placeholder="Email" class="input-item" autocomplete="off" v-model="formValues.email" required >
                 </div>
                 <div class="form-itens">
@@ -44,7 +44,7 @@
                 
                 localStorage.setItem('token', token)
                 
-                return this.$router.push({ path: '/sistemInside' })
+                return this.$router.push({ path: '/tela_inicial' })
                 
                 }catch(err){
                     console.log(err.response.status)
@@ -65,7 +65,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .city-image{
         width: 100%;
         position: absolute;

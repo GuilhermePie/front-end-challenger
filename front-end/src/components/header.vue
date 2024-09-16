@@ -8,7 +8,7 @@
     export default {
         methods:{
             voltar(){
-                this.$router.push({ path: '/' })
+                this.$router.push({ path: '/tela_inicial' })
             }
         }
     }
