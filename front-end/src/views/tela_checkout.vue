@@ -9,7 +9,7 @@
                 <input type="text" class="sub-input" placeholder="Validade">
                 <input type="text" class="sub-input" placeholder="Codigo de segurança" minlength="3" maxlength="3">
             </div>
-            <button class="btn">PAGAR AGORA!</button>
+            <button class="btn" @click="checkUserToken()">PAGAR AGORA!</button>
         </div>
         <div class="resumo-compra">
             <h2>RESUMO DE COMPRA</h2>
@@ -35,6 +35,18 @@
             return{
                 price:priceItem,
                 title:titleItem
+            }
+        },
+
+        methods:{
+            checkUserToken(){
+                const token = localStorage.getItem('token')
+
+                if(token){
+                    return this.$swal('Sucesso','Compra realizada com sucesso','success');
+                }
+
+                return this.$swal('Usuário não logado','Para realizar a compra, faça o login','error');
             }
         },
 

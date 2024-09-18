@@ -34,7 +34,6 @@
         async mounted(){
             const id = localStorage.getItem('id')
              await axios.get(`https://dummyjson.com/products/${id}`).then(response => {
-                console.log(response.data)
                 this.arrays = response.data
                 localStorage.setItem('title',this.arrays.title)
                 localStorage.setItem('price',this.arrays.price)

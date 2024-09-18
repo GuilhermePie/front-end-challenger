@@ -31,7 +31,6 @@
                 <a @click="signIn()" href=""><p>Back</p>
                 </a>
             </div>
-            <!-- <img src="../assets/city.png" alt="cidade" class="city-image"> -->
         </form>
     </div>
     
@@ -79,7 +78,7 @@
                         password:this.state.password
                     })
 
-                    this.$router.push('/')
+                    this.$router.push('/tela_login')
                     this.$swal('Sucesso','Usuário cadastrado com sucesso!','success');
 
                     }catch(err){
@@ -93,7 +92,7 @@
             },
 
             signIn(){
-                this.$router.push('/')
+                this.$router.push('/tela_login')
             },
         }
     }
@@ -135,7 +134,8 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        background-color: #caf6f5;
+        /* background-color: #caf6f5; */
+        background-color: #5a016f;
     }
 
     .form-btn{
@@ -144,7 +144,8 @@
         font-size: medium;
         border-radius: 25px;
         color:white;
-        background-color: #4fc2f8;
+        /* background-color: #4fc2f8; */
+        background-color: #5a016f;
         border: none;
         padding: 15px;
         width: 100%;

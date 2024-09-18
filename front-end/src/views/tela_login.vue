@@ -5,7 +5,7 @@
             <div class="form-infos">
                 <div class="form-itens">
                     <font-awesome-icon :icon="['fas', 'envelope']" />
-                    <input type="email" placeholder="Email" class="input-item" autocomplete="off" v-model="formValues.email" required >
+                    <input type="email" placeholder="Email" class="input-item"  v-model="formValues.email" required >
                 </div>
                 <div class="form-itens">
                     <font-awesome-icon :icon="['fas', 'lock']" />
@@ -16,7 +16,6 @@
             <div class="redirect">
                <a @click="signUp()">Sign Up</a> <p> here</p>
             </div>
-            <!-- <img src="../assets/city.png" alt="cidade" class="city-image"> -->
         </form>
     </div>
 </template>
@@ -44,7 +43,7 @@
                 
                 localStorage.setItem('token', token)
                 
-                return this.$router.push({ path: '/tela_inicial' })
+                return this.$router.push({ path: '/' })
                 
                 }catch(err){
                     console.log(err.response.status)
@@ -101,7 +100,9 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        background-color: #caf6f5;
+        /* background-color: #caf6f5;*/
+        background-color: #5a016f;
+
     }
 
     .form-btn{
@@ -110,7 +111,8 @@
         font-size: medium;
         border-radius: 25px;
         color:white;
-        background-color: #4fc2f8;
+        /* background-color: #4fc2f8; */
+        background-color: #5a016f;
         border: none;
         padding: 15px;
         width: 100%;
@@ -140,9 +142,9 @@
     }
 
     .form{
-        -webkit-box-shadow: 0px 0px 23px 5px rgba(0,0,0,0.2);
-        -moz-box-shadow: 0px 0px 23px 5px rgba(0,0,0,0.2);
-        box-shadow: 0px 0px 23px 5px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 0px 0px 23px 5px rgba(255, 255, 255, 0.2);
+        -moz-box-shadow: 0px 0px 23px 5px rgba(255, 255, 255, 0.2);
+        box-shadow: 0px 0px 23px 5px rgba(255, 255, 255, 0.2);
 
         position: relative;
         display: flex;

@@ -42,12 +42,12 @@
         },
 
         async mounted(){
-            const token = localStorage.getItem('token')
-            const response = await axios.get('http://localhost:3000/list-user',{
-                headers:{ Authorization: `Bearer ${token}`}
-            })
-
-            console.log(response.data)
+            // const token = localStorage.getItem('token')
+            // if(token){
+            //    const response = await axios.get('http://localhost:3000/list-user',{
+            //     headers:{ Authorization: `Bearer ${token}`}
+            // }) 
+            // }
             // buscando produtos por categoria
             // Categoria "Groceries"
             await axios.post('http://localhost:3000/api-type', {api_products: 'groceries', other_api: ''}).then(response => {
