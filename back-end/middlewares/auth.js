@@ -11,11 +11,9 @@ const auth = (req , res, next) =>{
         const decoded = verifyToken(token.replace('Bearer ', ''))
         if(!decoded){
             res.status(403).json({message:'Acesso proibido'})
-
         }
     }catch(err){
         res.status(401).json({message:'Token JWT inválido'})
-
     }
 
     next()

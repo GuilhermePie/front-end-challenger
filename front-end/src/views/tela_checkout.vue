@@ -25,6 +25,7 @@
 <script>
     import nav_bar from '../components/header.vue'
     import footer_bar from '../components/footer.vue'
+    import axios from 'axios'
 
     export default {
         data(){
@@ -39,14 +40,19 @@
         },
 
         methods:{
-            checkUserToken(){
+            async checkUserToken(){
                 const token = localStorage.getItem('token')
 
-                if(token){
-                    return this.$swal('Sucesso','Compra realizada com sucesso','success');
+                if(!token){
+                    return this.$swal('Usuário não logado','Para realizar a compra, faça o login','error');
                 }
 
-                return this.$swal('Usuário não logado','Para realizar a compra, faça o login','error');
+                var response = await axios.get('http://localhost:3000/user-token',{headers:{ Authorization: `Bearer ${token}`}
+                })
+
+                if(response.data){
+                    return this.$swal('Sucesso','Compra realizada com sucesso','success'); 
+                }
             }
         },
 
