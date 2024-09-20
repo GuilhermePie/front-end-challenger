@@ -2,10 +2,13 @@ import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import {generateToken} from '../services/jwt.js'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const prisma = new PrismaClient()
 
 const router = express.Router()
+
+const JWT_SECRET = process.env.JWT_SECRET
 
 //Type of products
 router.post('/api-type', async (req,res)=>{
@@ -81,7 +84,8 @@ router.post('/signIn', async(req,res)=>{
         }
 
         //gera o token JWT
-        const token = generateToken({id:user.id})
+        // const token = generateToken({id:user.id})
+        const token = jwt.sign({id:user.id}, JWT_SECRET, {expiresIn:'5m'})
 
         res.status(201).json(token)
     } catch(err){

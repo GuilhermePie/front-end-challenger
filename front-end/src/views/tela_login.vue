@@ -46,7 +46,6 @@
                 return this.$router.push({ path: '/' })
                 
                 }catch(err){
-                    console.log(err.response.status)
                     if(err.response.status === 404){
                         return this.$swal('Error','Nenhum usuário foi encontrado :(','error');
                     }

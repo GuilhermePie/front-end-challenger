@@ -1,14 +1,17 @@
-import {verifyToken} from '../services/jwt.js'
+// import {verifyToken} from '../services/jwt.js'
+import jwt from 'jsonwebtoken'
+
+const JWT_SECRET = process.env.JWT_SECRET
 
 const auth = (req , res, next) =>{
     const token = req.headers.authorization
 
     if(!token){
-        res.status(401).json({message:'Usuário negado'})
+        return res.status(401).json({message:'Usuário negado'})
     }
 
     try{
-        const decoded = verifyToken(token.replace('Bearer ', ''))
+        const decoded = jwt.verify(token.replace('Bearer ', ''), JWT_SECRET)
         if(!decoded){
             res.status(403).json({message:'Acesso proibido'})
         }
