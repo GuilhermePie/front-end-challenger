@@ -41,8 +41,10 @@
             }
         },
 
+
         async mounted(){
-            // GROCERIES
+            // buscando produtos por categoria
+            // Categoria "Groceries"
             await axios.post('http://localhost:3000/api-type', {api_products: 'groceries', other_api: ''}).then(response => {
                 if(response.data.products_result.products.length === 0){
                     console.log('Categoria não encontrada')
@@ -53,7 +55,7 @@
                 console.error(error);
             })
 
-            // KITCHEN ACCESSORIES
+            // Categoria "kitchen-accessories"
             await axios.post('http://localhost:3000/api-type', {api_products: 'kitchen-accessories'}).then(response => {
                 if(response.data.products_result.products.length === 0){
                     console.log('Categoria não encontrada')
@@ -64,7 +66,7 @@
                 console.error(error);
             })
 
-            // // HOME DECORATION
+            // Categoria "home-decoration"
             await axios.post('http://localhost:3000/api-type', {api_products: 'home-decoration'}).then(response => {
                 if(response.data.products_result.products.length === 0){
                     console.log('Categoria não encontrada ')

@@ -9,7 +9,7 @@
                 <input type="text" class="sub-input" placeholder="Validade">
                 <input type="text" class="sub-input" placeholder="Codigo de segurança" minlength="3" maxlength="3">
             </div>
-            <button class="btn">PAGAR AGORA!</button>
+            <button class="btn" @click="checkUserToken()">PAGAR AGORA!</button>
         </div>
         <div class="resumo-compra">
             <h2>RESUMO DE COMPRA</h2>
@@ -25,6 +25,7 @@
 <script>
     import nav_bar from '../components/header.vue'
     import footer_bar from '../components/footer.vue'
+    import axios from 'axios'
 
     export default {
         data(){
@@ -35,6 +36,23 @@
             return{
                 price:priceItem,
                 title:titleItem
+            }
+        },
+
+        methods:{
+            async checkUserToken(){
+                const token = localStorage.getItem('token')
+
+                if(!token){
+                    return this.$swal('Usuário não logado','Para realizar a compra, faça o login','error');
+                }
+
+                var response = await axios.get('http://localhost:3000/user-token',{headers:{ Authorization: `Bearer ${token}`}
+                })
+
+                if(response.data){
+                    return this.$swal('Sucesso','Compra realizada com sucesso','success'); 
+                }
             }
         },
 
