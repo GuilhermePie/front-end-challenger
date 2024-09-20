@@ -1,6 +1,5 @@
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
-import {generateToken} from '../services/jwt.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
@@ -10,14 +9,13 @@ const router = express.Router()
 
 const JWT_SECRET = process.env.JWT_SECRET
 
-//Type of products
 router.post('/api-type', async (req,res)=>{
     try{
         var other_result = 'Api não utilizada'
-        var products_result = 'Api não utilizada'
+        var categoryResult = 'Api não utilizada'
 
-        if(req.body.api_products){
-            products_result = await fetch(`https:/dummyjson.com/products/category/${req.body.api_products}`)
+        if(req.body.productCategory){
+            categoryResult = await fetch(`https:/dummyjson.com/products/category/${req.body.productCategory}`)
             .then(response => response.json())
             .catch(err => err.message);
         }
@@ -28,7 +26,7 @@ router.post('/api-type', async (req,res)=>{
             .catch(err => err.message); 
         }
         
-        const result = {products_result,other_result}
+        const result = {categoryResult,other_result}
 
         res.status(201).json(result)
 
@@ -76,18 +74,17 @@ router.post('/signIn', async(req,res)=>{
             return res.status(404).json({message:'Usuário não encontrado'});
         }
 
+        //Verifica se a senha é a mesma
         const isMatch = await bcrypt.compare(userInfo.password, user.password)
 
-        //Verifica se a senha é a mesma
         if(!isMatch){
             return res.status(400).json({message:'Senha inválida'});
         }
 
-        //gera o token JWT
-        // const token = generateToken({id:user.id})
-        const token = jwt.sign({id:user.id}, JWT_SECRET, {expiresIn:'5m'})
 
-        res.status(201).json(token)
+        const token = jwt.sign({id:user.id}, JWT_SECRET, {expiresIn:'1m'})
+
+        return res.status(201).json(token)
     } catch(err){
         res.status(500).json({message:err});
     }

@@ -7,19 +7,21 @@ const auth = (req , res, next) =>{
     const token = req.headers.authorization
 
     if(!token){
-        return res.status(401).json({message:'Usuário negado'})
+        return res.status(402).json({message:'token não existe'})
     }
 
     try{
-        const decoded = jwt.verify(token.replace('Bearer ', ''), JWT_SECRET)
-        if(!decoded){
-            res.status(403).json({message:'Acesso proibido'})
-        }
-    }catch(err){
-        res.status(401).json({message:'Token JWT inválido'})
-    }
+        jwt.verify(token.replace('Bearer ', ''), JWT_SECRET, (err,decoded) =>{
+            if(err){
+                return res.status(401).json({message:"Token inválido"})
+            }
 
-    next()
+            req.userId = decoded.id
+            next()
+        })
+    }catch(err){
+        return res.status(403).json({message:err})
+    }
 }
 
 export default auth
