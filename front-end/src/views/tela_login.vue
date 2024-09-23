@@ -36,12 +36,13 @@
         methods: {
             async validate(){
                 try{
-                const { data:token } = await axios.post('http://localhost:3000/signIn', {
+                const data = await axios.post('http://localhost:3000/signIn', {
                         email:this.formValues.email,
                         password:this.formValues.password
                 })
                 
-                localStorage.setItem('token', token)
+                localStorage.setItem('token', data.data.token)
+                localStorage.setItem('userUrl', data.data.gravatarUrl)
                 
                 return this.$router.push({ path: '/' })
                 

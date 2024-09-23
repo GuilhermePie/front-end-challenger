@@ -4,7 +4,7 @@
         <button class="btn" @click="signIn()" v-if="!token_exist">Login</button>
         <div class="user-box" v-if="token_exist">
             <button class="btn" @click="logOut()" >Log Out</button>  
-            <font-awesome-icon :icon="['fas', 'user']" class="user-icon"/>
+            <img :src=this.userUrl alt="" class="user-icon">
         </div>
     </header>
 </template>
@@ -13,7 +13,8 @@
     export default {
         data(){
             return{
-                token_exist: localStorage.getItem('token')
+                token_exist: localStorage.getItem('token'),
+                userUrl:localStorage.getItem('userUrl')
             }
         },
 
@@ -69,10 +70,11 @@
     }
 
     .user-icon{
+        width: 35px;
+        height: 35px;
         color: #ffffff;
         border: 2px solid white;
         border-radius: 50%;
-        padding: 10px 11px;
         cursor: pointer;
     }
 

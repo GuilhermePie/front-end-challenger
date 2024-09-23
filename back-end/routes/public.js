@@ -2,6 +2,7 @@ import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import sha256 from 'crypto-js/sha256.js'
 
 const prisma = new PrismaClient()
 
@@ -64,7 +65,12 @@ router.post('/signIn', async(req,res)=>{
     try{
         const userInfo = req.body
 
-        //Busca user no banco de dados
+        //busca ususario no gravatar
+        const email = userInfo.email.toLowerCase()
+        const hashedEmail = sha256( email );
+        const gravatarUrl = `https://www.gravatar.com/avatar/${hashedEmail}`;
+
+        //Busca user no banco de dadosclea 
         const user = await prisma.user.findUnique({
             where: {email:userInfo.email}
         })
@@ -84,10 +90,11 @@ router.post('/signIn', async(req,res)=>{
 
         const token = jwt.sign({id:user.id}, JWT_SECRET, {expiresIn:'1m'})
 
-        return res.status(201).json(token)
+        return res.status(201).json({token,gravatarUrl})
     } catch(err){
         res.status(500).json({message:err});
     }
-})
+});
+
 
 export default router;
