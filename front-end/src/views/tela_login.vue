@@ -36,13 +36,13 @@
         methods: {
             async validate(){
                 try{
-                const data = await axios.post('http://localhost:3000/signIn', {
+                const response = await axios.post('http://localhost:3000/signIn', {
                         email:this.formValues.email,
                         password:this.formValues.password
                 })
                 
-                localStorage.setItem('token', data.data.token)
-                localStorage.setItem('userUrl', data.data.gravatarUrl)
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('userUrl', response.data.gravatarUrl)
                 
                 return this.$router.push({ path: '/' })
                 
@@ -124,6 +124,7 @@
         background-color: #efefed;
         border: 0px;
         padding: 8px;
+        width: 100%;
     }
 
     .form-infos{
