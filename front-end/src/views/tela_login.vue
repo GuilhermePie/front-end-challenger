@@ -43,6 +43,7 @@
                 
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('userUrl', response.data.gravatarUrl)
+                localStorage.setItem('userEmail', this.formValues.email)
                 
                 return this.$router.push({ path: '/' })
                 

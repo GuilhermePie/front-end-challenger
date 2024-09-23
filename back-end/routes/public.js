@@ -68,7 +68,15 @@ router.post('/signIn', async(req,res)=>{
         //busca ususario no gravatar
         const email = userInfo.email.toLowerCase()
         const hashedEmail = sha256( email );
-        const gravatarUrl = `https://www.gravatar.com/avatar/${hashedEmail}`;
+        const gravatarUrl = await fetch(`https://www.gravatar.com/avatar/${hashedEmail}?d=404`)
+        .then(response => {
+            if(response.status === 200){
+                return response.url
+            }else{
+                return 'false'
+            }
+        })
+        .catch(err => err.message); 
 
         //Busca user no banco de dadosclea 
         const user = await prisma.user.findUnique({
