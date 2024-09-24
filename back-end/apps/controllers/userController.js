@@ -4,6 +4,7 @@ import sha256 from 'crypto-js/sha256.js'
 import prismaModel from '../models/prismaModel.js'
 
 const JWT_SECRET = process.env.JWT_SECRET
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET
 
 class userController{
 
@@ -56,12 +57,15 @@ class userController{
             return res.status(400).json({message:'Senha inválida'});
         }
 
+        const refreshToken = jwt.sign({id:user.id}, JWT_REFRESH_SECRET, {expiresIn:'30d'})
 
         const token = jwt.sign({id:user.id}, JWT_SECRET, {expiresIn:'1m'})
 
+        await prismaModel.update(userInfo.email,refreshToken)
+        
         return res.status(201).json({token,gravatarUrl})
     } catch(err){
-        res.status(500).json({message:err});
+        res.status(500).json({message:err}); 
     }
 }
 

@@ -9,6 +9,7 @@ class prismaModel{
                 email:user.email,
                 name:user.name,
                 password: hashPassword,
+                token:'',
             }
         })
     }
@@ -17,6 +18,17 @@ class prismaModel{
         return await prisma.user.findUnique({
             where: {email:userEmail}
         })
+    }
+
+    async update(userEmail,refreshToken){
+        return await prisma.user.update({
+            where: {
+              email: userEmail,
+            },
+            data: {
+              token: refreshToken,
+            },
+          })
     }
 }
 
