@@ -4,7 +4,7 @@
         <div class="box-list">
             <h3>GROCERIES</h3>
             <div class="products-list">
-                <card v-for="arr in arrays_groceries" :title="arr.title" :price="arr.price" :link="arr.thumbnail" :id="arr.id"/>
+                <card v-for="arr in arrays_groceries" :title="arr.title" :price="Math.round(arr.price * this.dollar_cotacao.data)" :link="arr.thumbnail" :id="arr.id"/>
             </div>
             
         </div>  
@@ -12,14 +12,14 @@
         <div class="box-list">
             <h3>KITCHEN ACCESSORIES</h3>
             <div class="products-list">
-                <card v-for="arr in arrays_kitchen_accessories" :title="arr.title" :price="arr.price" :link="arr.thumbnail" :id="arr.id"/>
+                <card v-for="arr in arrays_kitchen_accessories" :title="arr.title" :price="Math.round(arr.price * this.dollar_cotacao.data)" :link="arr.thumbnail" :id="arr.id"/>
             </div>
         </div>
 
         <div class="box-list">
             <h3>HOME DECORATION</h3>
             <div class="products-list">
-                <card v-for="arr in arrays_home_decoration" :title="arr.title" :price="arr.price" :link="arr.thumbnail" :id="arr.id"/>
+                <card v-for="arr in arrays_home_decoration" :title="arr.title" :price="Math.round(arr.price * this.dollar_cotacao.data)" :link="arr.thumbnail" :id="arr.id"/>
             </div>
         </div>
     </main>
@@ -31,18 +31,25 @@
     import nav_bar from '../components/header.vue'
     import footer_bar from '../components/footer.vue'
     import {productsCategoryApi} from '../composable/productsCategoryApi.js'
+    import { dollarPriceApi } from '../composable/dollarPriceApi.js'
 
     export default {
         data(){
             return {
                 arrays_groceries:[],
                 arrays_kitchen_accessories:[],
-                arrays_home_decoration:[]
+                arrays_home_decoration:[],
+                dollar_cotacao:''
             }
         },
 
 
         async mounted(){
+
+            this.dollar_cotacao = await dollarPriceApi()
+            localStorage.setItem('dollar',this.dollar_cotacao.data)
+            
+
             // buscando produtos por categoria
             // productsCategoryApi(url = string, body = obj)
             // Categoria "Groceries"

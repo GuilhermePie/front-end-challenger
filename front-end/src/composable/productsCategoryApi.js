@@ -9,7 +9,6 @@ export async function productsCategoryApi(url,body){
             }else{
                 return response.data.products
             }
-            
         })
         .catch(error => {
             console.error(error);

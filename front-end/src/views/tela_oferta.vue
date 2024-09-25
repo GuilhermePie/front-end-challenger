@@ -12,7 +12,7 @@
         <div class="infos">
             <h2>{{ arrays.title }}</h2>
             <p>{{ arrays.description }}</p>
-            <span class="price"><strong>R$ {{ arrays.price }}</strong></span>
+            <span class="price"><strong>R$ {{ real }}</strong></span>
             <button class="btn" @click="checkout()">COMPRAR</button>
         </div>
     </main>
@@ -27,16 +27,19 @@
     export default {
         data(){
             return {
-                arrays:[]
+                arrays:[],
+                real:''
             }
         },
 
         async mounted(){
             const id = localStorage.getItem('id')
+            const dollar = localStorage.getItem('dollar')
              await axios.get(`https://dummyjson.com/products/${id}`).then(response => {
                 this.arrays = response.data
                 localStorage.setItem('title',this.arrays.title)
-                localStorage.setItem('price',this.arrays.price)
+                localStorage.setItem('price',Math.round(this.arrays.price * dollar))
+                this.real = localStorage.getItem('price')
             }).catch(error => {
                 console.error(error);
             })
