@@ -45,7 +45,7 @@
 
             logOut(){
                 this.$router.push({ path: '/tela_login' })
-                const token = localStorage.removeItem('token')
+                localStorage.clear()
             }
         }
     }
