@@ -30,7 +30,7 @@
     import card from '../components/card.vue'
     import nav_bar from '../components/header.vue'
     import footer_bar from '../components/footer.vue'
-    import axios from 'axios'
+    import {productsCategoryApi} from '../composable/productsCategoryApi.js'
 
     export default {
         data(){
@@ -44,46 +44,15 @@
 
         async mounted(){
             // buscando produtos por categoria
+            // productsCategoryApi(url = string, body = obj)
             // Categoria "Groceries"
-            await axios.post('http://localhost:3000/api-type', {api_products: 'groceries', other_api: ''}).then(response => {
-                if(response.data.products_result.products.length === 0){
-                    console.log('Categoria não encontrada')
-                }else{
-                    this.arrays_groceries = response.data.products_result.products
-                }
-            }).catch(error => {
-                console.error(error);
-            })
+            this.arrays_groceries = await productsCategoryApi('http://localhost:3000/dummyjson/category',{productCategory: 'groceries'})
 
             // Categoria "kitchen-accessories"
-            await axios.post('http://localhost:3000/api-type', {api_products: 'kitchen-accessories'}).then(response => {
-                if(response.data.products_result.products.length === 0){
-                    console.log('Categoria não encontrada')
-                }else{
-                    this.arrays_kitchen_accessories = response.data.products_result.products
-                }
-            }).catch(error => {
-                console.error(error);
-            })
+            this.arrays_kitchen_accessories = await productsCategoryApi('http://localhost:3000/dummyjson/category',{productCategory: 'kitchen-accessories'})
 
             // Categoria "home-decoration"
-            await axios.post('http://localhost:3000/api-type', {api_products: 'home-decoration'}).then(response => {
-                if(response.data.products_result.products.length === 0){
-                    console.log('Categoria não encontrada ')
-                }else{
-                    this.arrays_home_decoration = response.data.products_result.products
-                }
-                
-            }).catch(error => {
-                console.error(error);
-            })
-
-            //Outra Api
-            // await axios.post('http://localhost:3000/api-type', {other_api: 'oi'}).then(response => {
-            //     console.log(response)
-            // }).catch(error => {
-            //     console.error(error);
-            // })
+            this.arrays_home_decoration = await productsCategoryApi('http://localhost:3000/dummyjson/category',{productCategory: 'home-decoration'})
         },
 
         components:{

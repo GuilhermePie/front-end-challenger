@@ -41,18 +41,27 @@
 
         methods:{
             async checkUserToken(){
-                const token = localStorage.getItem('token')
+                try{
+                    const token = localStorage.getItem('token')
+                    const userEmail = localStorage.getItem('userEmail')
 
-                if(!token){
-                    return this.$swal('Usuário não logado','Para realizar a compra, faça o login','error');
+                    if(!token){
+                        return this.$swal('Usuário não logado','Para realizar a compra, faça o login','error');
+                    }
+
+                    const response = await axios.post('http://localhost:3000/user-token', {userEmail:userEmail},{headers:{ Authorization: `Bearer ${token}`}
+                    })
+
+                    if(response.status === 200){
+                        return this.$swal('Sucesso','Compra realizada com sucesso','success'); 
+                    }
+
+                }catch(err){
+                    if(err.status === 404){
+                        return this.$swal('Token Expirado','Seu token de acesso esta expirado, faça login novamente','error'); 
+                    }
                 }
-
-                var response = await axios.get('http://localhost:3000/user-token',{headers:{ Authorization: `Bearer ${token}`}
-                })
-
-                if(response.data){
-                    return this.$swal('Sucesso','Compra realizada com sucesso','success'); 
-                }
+                
             }
         },
 
