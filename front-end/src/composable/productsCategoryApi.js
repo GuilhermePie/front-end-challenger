@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export async function productsCategoryApi(url,body){
+async function productsCategoryApi(url,body){
     try{
         var axiosApi = await axios.post(url, body)
         .then(response => {
@@ -10,13 +10,25 @@ export async function productsCategoryApi(url,body){
                 return response.data.products
             }
         })
-        .catch(error => {
-            console.error(error);
-        })
+        .catch(error => error)
 
-    }catch (error){
-        console.log(error)
+    }catch (err){
+        console.log(err)
     }
 
     return axiosApi
 }
+
+async function productById(url,productId) {
+    try{
+        var productIdInfos = await axios.post(url,productId)
+        .then(response => response.data)
+        .catch(error => error)
+    }catch (err){
+        console.log(err)
+    }
+
+    return productIdInfos
+}
+
+export { productsCategoryApi , productById }

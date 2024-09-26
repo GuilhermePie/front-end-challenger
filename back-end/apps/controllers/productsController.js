@@ -13,7 +13,7 @@ class productsController{
 
     async searchId(req,res) {
         try{
-            const response = await fetch(`https://dummyjson.com/products/${id}`)
+            const response = await fetch(`https://dummyjson.com/products/${req.body.productId}`)
             .then(response => response.json())
             .catch(err => err.message);
     

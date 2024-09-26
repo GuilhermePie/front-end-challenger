@@ -22,7 +22,7 @@
 <script>
     import nav_bar from '../components/header.vue'
     import footer_bar from '../components/footer.vue'
-    import axios from 'axios'
+    import { productById } from '../composable/productsCategoryApi.js'
 
     export default {
         data(){
@@ -35,14 +35,13 @@
         async mounted(){
             const id = localStorage.getItem('id')
             const dollar = localStorage.getItem('dollar')
-             await axios.get(`https://dummyjson.com/products/${id}`).then(response => {
-                this.arrays = response.data
-                localStorage.setItem('title',this.arrays.title)
-                localStorage.setItem('price',Math.round(this.arrays.price * dollar))
-                this.real = localStorage.getItem('price')
-            }).catch(error => {
-                console.error(error);
-            })
+
+            this.arrays = await productById('http://localhost:3000/dummyjson/products/id', {productId:id})
+
+            localStorage.setItem('title',this.arrays.title)
+            localStorage.setItem('price',Math.round(this.arrays.price * dollar))
+            this.real = localStorage.getItem('price')
+            
         },
 
         methods:{
