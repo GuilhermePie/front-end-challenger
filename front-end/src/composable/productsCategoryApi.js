@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-async function productsCategoryApi(url,body){
+async function productsCategoryApi(category){
     try{
-        var axiosApi = await axios.post(url, body)
+        var axiosApi = await axios.post('http://localhost:3000/dummyjson/category', {productCategory:category})
         .then(response => {
             if(response.data.products.length === 0){
                 console.log('Categoria não encontrada')

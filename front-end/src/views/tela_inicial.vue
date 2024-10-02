@@ -51,15 +51,15 @@
             
 
             // buscando produtos por categoria
-            // productsCategoryApi(url = string, body = obj)
+            // productsCategoryApi(string)
             // Categoria "Groceries"
-            this.arrays_groceries = await productsCategoryApi('http://localhost:3000/dummyjson/category',{productCategory: 'groceries'})
+            this.arrays_groceries = await productsCategoryApi('groceries')
 
             // Categoria "kitchen-accessories"
-            this.arrays_kitchen_accessories = await productsCategoryApi('http://localhost:3000/dummyjson/category',{productCategory: 'kitchen-accessories'})
+            this.arrays_kitchen_accessories = await productsCategoryApi( 'kitchen-accessories')
 
             // Categoria "home-decoration"
-            this.arrays_home_decoration = await productsCategoryApi('http://localhost:3000/dummyjson/category',{productCategory: 'home-decoration'})
+            this.arrays_home_decoration = await productsCategoryApi('home-decoration')
         },
 
         components:{
