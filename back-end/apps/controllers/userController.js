@@ -57,7 +57,7 @@ class userController{
             return res.status(400).json({message:'Senha inválida'});
         }
 
-        const refreshToken = jwt.sign({id:user.id}, JWT_REFRESH_SECRET, {expiresIn:'30d'})
+        const refreshToken = jwt.sign({id:user.id}, JWT_REFRESH_SECRET, {expiresIn:'0'})
 
         const token = jwt.sign({id:user.id}, JWT_SECRET, {expiresIn:'1m'})
 
